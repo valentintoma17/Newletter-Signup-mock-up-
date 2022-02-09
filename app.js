@@ -28,11 +28,14 @@ app.post("/", function(req, res){
 
   const jsonData= JSON.stringify(data);
 
-  const url = "https://us20.api.mailchimp.com/3.0/lists/69f3df4689";
+  var listID = config.LIST_ID;
+  var bearer = config.AUTH_BEARER;
+
+  const url = "https://us20.api.mailchimp.com/3.0/lists/" + listID;
   const options = {
     method: 'POST',
     headers: {
-             Authorization: 'Bearer a142b60281dfee8039ddc68952cdf243-us20'
+             Authorization: 'Bearer' + bearer 
          }
   };
 
@@ -60,7 +63,3 @@ app.post("/failure", function(req, res){
 app.listen(process.env.PORT || 3000, function(){
    console.log("Server is running on port 3000.");
 });
-
-// API key : a142b60281dfee8039ddc68952cdf243-us20
-
-// audience unique id: 69f3df4689
